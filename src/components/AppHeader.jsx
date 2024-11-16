@@ -1,6 +1,12 @@
 import React from "react";
 import { Link, NavLink } from "react-router-dom";
-import { IconHeart, IconShoppingCart, IconUser } from "@tabler/icons-react";
+import {
+  IconHeart,
+  IconMenu,
+  IconMenu2,
+  IconShoppingCart,
+  IconUser,
+} from "@tabler/icons-react";
 
 const AppHeader = () => {
   const navigations = [
@@ -20,11 +26,28 @@ const AppHeader = () => {
 
   return (
     <header className="flex items-center justify-between gap-4 p-4 bg-white border-b shadow">
-      {/* Logo */}
-      <div className="text-2xl font-medium text-rose-500"> V-Mart </div>
+      <div className="flex items-center gap-4">
+        {/* Menu Button For Small Screen */}
+        <div className="md:hidden text-slate-600">
+          {" "}
+          <IconMenu2 size={20} />{" "}
+        </div>
+
+        {/* Logo */}
+        <div className="text-2xl font-medium text-rose-500 max-md:hidden">
+          {" "}
+          V-Mart{" "}
+        </div>
+
+        {/* Logo Icon for Small Screen */}
+        <div className="text-2xl font-medium text-rose-500 md:hidden">
+          {" "}
+          <img src="favicon.ico" alt="logo" className="size-[30px]" />{" "}
+        </div>
+      </div>
 
       {/* Navigation */}
-      <nav>
+      <nav className="max-md:hidden">
         <ul className="flex gap-4">
           {navigations?.map((navItem) => (
             <li key={navItem.path} className="px-2 font-medium text-slate-500">

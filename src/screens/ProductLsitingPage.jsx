@@ -1,7 +1,8 @@
+import { IconSortDescending } from "@tabler/icons-react";
 import React, { useCallback, useEffect, useState } from "react";
+import Dropdown from "../components/Dropdown";
 import ProductCard from "../components/ProductCard";
 import SearchBox from "../components/SearchBox";
-import Dropdown from "../components/Dropdown";
 
 const ProductLsitingPage = () => {
   const [products, setProducts] = useState([]);
@@ -32,30 +33,34 @@ const ProductLsitingPage = () => {
 
   const sortOptions = ["Default", "Price low to high", "Price high to low"];
 
-  console.log(products);
-
   return (
-    <div className="flex flex-col gap-4 w-[80%] h-full">
+    <div className="flex flex-col gap-4 w-full md:w-[80%] h-full">
       {/* Search Box */}
-      <div className="flex justify-between">
-        <SearchBox
-          value={searchTerm}
-          onChange={(e) => {
-            setSearchTerm(e.target.value);
-          }}
-        />
+      <div className="flex items-center justify-between gap-2">
+        <div className="w-[500px] max-md:w-full">
+          <SearchBox
+            value={searchTerm}
+            onChange={(e) => {
+              setSearchTerm(e.target.value);
+            }}
+          />
+        </div>
 
-        <div className="w-[250px]">
+        <div className="w-[200px] max-md:hidden">
           <Dropdown
             value={sortBy}
             onChange={(newValue) => setSortBy(newValue)}
             options={sortOptions}
           />
         </div>
+
+        <div className="p-2 bg-white border rounded-md shadow-md text-slate-600 md:hidden">
+          <IconSortDescending size={18} />
+        </div>
       </div>
 
       {/* Product Listing */}
-      <div className="grid flex-1 grid-cols-5 gap-4 overflow-auto">
+      <div className="grid flex-1 grid-cols-2 gap-4 overflow-auto md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5">
         {filteredProducts?.map((product) => (
           <ProductCard key={product?._id} productData={product} />
         ))}
