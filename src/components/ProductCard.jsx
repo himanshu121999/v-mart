@@ -1,4 +1,8 @@
-import { IconHeart, IconShoppingCartPlus, IconStar } from "@tabler/icons-react";
+import {
+  IconHeart,
+  IconShoppingCartPlus,
+  IconStarFilled,
+} from "@tabler/icons-react";
 import React from "react";
 
 const ProductCard = ({
@@ -10,14 +14,17 @@ const ProductCard = ({
         <img src={images?.[0]} alt={title} className="size-[150px]" />
       </div>
 
-      <div className="capitalize" > {category} </div>
+      <span className="px-2 py-1 text-xs font-medium capitalize rounded-full text-rose-400 bg-rose-50 w-fit ">
+        {" "}
+        {category}{" "}
+      </span>
 
-      <div title={title} className="text-gray-600 truncate">
+      <div title={title} className="text-gray-700 truncate">
         {title}
       </div>
 
       <span className="flex items-center gap-1 px-2 py-1 text-xs font-medium bg-green-100 rounded-full w-fit text-slate-700">
-        <IconStar size={12} /> {rating}
+        <IconStarFilled size={12} className="text-yellow-400" /> {rating}
       </span>
 
       <div className="flex items-center justify-between">

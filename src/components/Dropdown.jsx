@@ -10,9 +10,9 @@ const Dropdown = ({ value, onChange, options }) => {
         onClick={() => setIsOpen((prev) => !prev)}
         className="flex items-center justify-between gap-2 p-3 bg-white border rounded-md shadow-md text-slate-700"
       >
-        <div>
+        <div className="text-xs">
           {" "}
-          Sort by : <span className="font-medium"> {value} </span>{" "}
+          Sort by : <span className="font-semibold"> {value} </span>{" "}
         </div>
         <span>
           <IconChevronDown className="text-gray-500" />
@@ -25,7 +25,10 @@ const Dropdown = ({ value, onChange, options }) => {
             const isSelected = option === value;
             return (
               <li
-                onClick={() => onChange(option)}
+                onClick={() => {
+                  onChange(option);
+                  setIsOpen(false);
+                }}
                 className={`px-2 py-1 cursor-pointer ${
                   isSelected ? "font-medium" : ""
                 }`}
